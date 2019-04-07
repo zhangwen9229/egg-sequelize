@@ -1,33 +1,15 @@
-# egg-sequelize
+# egg-we-sequelize
 
 [Sequelize](http://sequelizejs.com) plugin for Egg.js.
 
 > NOTE: This plugin just for integrate Sequelize into Egg.js, more documentation please visit http://sequelizejs.com.
 
-[![NPM version][npm-image]][npm-url]
-[![build status][travis-image]][travis-url]
-[![Test coverage][codecov-image]][codecov-url]
-[![David deps][david-image]][david-url]
-[![Known Vulnerabilities][snyk-image]][snyk-url]
-[![npm download][download-image]][download-url]
-
-[npm-image]: https://img.shields.io/npm/v/egg-sequelize.svg?style=flat-square
-[npm-url]: https://npmjs.org/package/egg-sequelize
-[travis-image]: https://img.shields.io/travis/eggjs/egg-sequelize.svg?style=flat-square
-[travis-url]: https://travis-ci.org/eggjs/egg-sequelize
-[codecov-image]: https://codecov.io/gh/eggjs/egg-sequelize/branch/master/graph/badge.svg
-[codecov-url]: https://codecov.io/gh/eggjs/egg-sequelize
-[david-image]: https://img.shields.io/david/eggjs/egg-sequelize.svg?style=flat-square
-[david-url]: https://david-dm.org/eggjs/egg-sequelize
-[snyk-image]: https://snyk.io/test/npm/egg-sequelize/badge.svg?style=flat-square
-[snyk-url]: https://snyk.io/test/npm/egg-sequelize
-[download-image]: https://img.shields.io/npm/dm/egg-sequelize.svg?style=flat-square
-[download-url]: https://npmjs.org/package/egg-sequelize
+### 根据 egg-sequelize 修改。 配合[weegg-sequelize-auto](https://www.npmjs.com/package/weegg-sequelize-auto)可自动生成TypeScript Models。
 
 ## Install
 
 ```bash
-$ npm i --save egg-sequelize
+$ npm i --save egg-we-sequelize
 $ npm install --save mysql2 # For both mysql and mariadb dialects
 
 # Or use other database backend.
@@ -44,7 +26,7 @@ $ npm install --save tedious # MSSQL
 ``` js
 exports.sequelize = {
   enable: true,
-  package: 'egg-sequelize'
+  package: 'egg-we-sequelize'
 }
 ```
 
@@ -65,7 +47,7 @@ exports.sequelize = {
 };
 ```
 
-egg-sequelize has a default sequelize options below
+egg-we-sequelize has a default sequelize options below
 
 ```js
 {
@@ -74,7 +56,7 @@ egg-sequelize has a default sequelize options below
     logging(...args) {
       // if benchmark enabled, log used
       const used = typeof args[1] === 'number' ? `[${args[1]}ms]` : '';
-      app.logger.info('[egg-sequelize]%s %s', used, args[0]);
+      app.logger.info('[egg-we-sequelize]%s %s', used, args[0]);
     },
     host: 'localhost',
     port: 3306,
@@ -167,11 +149,11 @@ class UserController extends Controller {
 
 ### Associate
 
-Define all your associations in `Model.associate()` and egg-sequelize will execute it after all models loaded. See example below.
+Define all your associations in `Model.associate()` and egg-we-sequelize will execute it after all models loaded. See example below.
 
 ### Multiple Datasources
 
-egg-sequelize support load multiple datasources independently. You can use `config.sequelize.datasources` to configure and load multiple datasources.
+egg-we-sequelize support load multiple datasources independently. You can use `config.sequelize.datasources` to configure and load multiple datasources.
 
 ```js
 // config/config.default.js
@@ -256,7 +238,7 @@ module.exports = (app, model) => {
 
 ### Customize Sequelize
 
-By default, egg-sequelize will use sequelize@4, you can cusomize sequelize version by pass sequelize instance with `config.sequelize.Sequelize` like this:
+By default, egg-we-sequelize will use sequelize@4, you can cusomize sequelize version by pass sequelize instance with `config.sequelize.Sequelize` like this:
 
 ```js
 // config/config.default.js
