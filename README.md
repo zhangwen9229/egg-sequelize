@@ -5,6 +5,29 @@
 > NOTE: This plugin just for integrate Sequelize into Egg.js, more documentation please visit http://sequelizejs.com.
 
 ### 根据 egg-sequelize 修改。 配合[weegg-sequelize-auto](https://www.npmjs.com/package/weegg-sequelize-auto)可自动生成TypeScript Models。
+### 可在app/model/ 下新增 associate.ts，示例内容如下
+```
+  module.exports.init = tabels => {
+    console.log(tabels);
+
+    tabels.test.associate = models => {
+        tabels.test.belongsTo(models.ta, { foreignKey: 'taId' });
+    };
+
+    tabels.ta.associate = models => {
+        tabels.ta.hasMany(models.test, { foreignKey: 'taId' });
+    };
+
+
+    // 以下为固定代码，勿删
+    Object.keys(tabels).forEach(modelName => {
+        if ('associate' in tabels[modelName]) {
+            tabels[modelName].associate(tabels);
+        }
+    });
+  };
+
+```
 
 ## Install
 
