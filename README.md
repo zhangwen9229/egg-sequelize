@@ -1,4 +1,4 @@
-# egg-we-sequelize
+# egg-sequelize
 
 [Sequelize](http://sequelizejs.com) plugin for Egg.js.
 
@@ -32,7 +32,7 @@
 ## Install
 
 ```bash
-$ npm i --save egg-we-sequelize
+$ npm i --save egg-sequelize
 $ npm install --save mysql2 # For both mysql and mariadb dialects
 
 # Or use other database backend.
@@ -49,7 +49,7 @@ $ npm install --save tedious # MSSQL
 ``` js
 exports.sequelize = {
   enable: true,
-  package: 'egg-we-sequelize'
+  package: 'egg-sequelize'
 }
 ```
 
@@ -70,7 +70,7 @@ exports.sequelize = {
 };
 ```
 
-egg-we-sequelize has a default sequelize options below
+egg-sequelize has a default sequelize options below
 
 ```js
 {
@@ -79,7 +79,7 @@ egg-we-sequelize has a default sequelize options below
     logging(...args) {
       // if benchmark enabled, log used
       const used = typeof args[1] === 'number' ? `[${args[1]}ms]` : '';
-      app.logger.info('[egg-we-sequelize]%s %s', used, args[0]);
+      app.logger.info('[egg-sequelize]%s %s', used, args[0]);
     },
     host: 'localhost',
     port: 3306,
@@ -172,11 +172,11 @@ class UserController extends Controller {
 
 ### Associate
 
-Define all your associations in `Model.associate()` and egg-we-sequelize will execute it after all models loaded. See example below.
+Define all your associations in `Model.associate()` and egg-sequelize will execute it after all models loaded. See example below.
 
 ### Multiple Datasources
 
-egg-we-sequelize support load multiple datasources independently. You can use `config.sequelize.datasources` to configure and load multiple datasources.
+egg-sequelize support load multiple datasources independently. You can use `config.sequelize.datasources` to configure and load multiple datasources.
 
 ```js
 // config/config.default.js
@@ -261,7 +261,7 @@ module.exports = (app, model) => {
 
 ### Customize Sequelize
 
-By default, egg-we-sequelize will use sequelize@4, you can cusomize sequelize version by pass sequelize instance with `config.sequelize.Sequelize` like this:
+By default, egg-sequelize will use sequelize@4, you can cusomize sequelize version by pass sequelize instance with `config.sequelize.Sequelize` like this:
 
 ```js
 // config/config.default.js
